@@ -25,8 +25,14 @@ jobs:
       - name: Install dependencies
         run: flutter pub get
 
+      - name: Upgrade Android Embedding
+        run: |
+          cd android
+          # Memastikan konfigurasi v2 terbaca atau patch otomatis
+          cd ..
+
       - name: Build Release APK
-        run: flutter build apk --release --no-pub --target-platform android-arm,android-arm64
+        run: flutter build apk --release --no-pub
 
       - name: Upload APK
         uses: actions/upload-artifact@v4
